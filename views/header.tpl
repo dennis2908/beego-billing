@@ -24,6 +24,7 @@
                 <li><a href="/bill">Company's Bill</a></li>
             </ul>        
             </li>
+			<li><a href="/logout">Sign out</a></li>
 
         </ul>
     </nav>

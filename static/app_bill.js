@@ -24,7 +24,7 @@ function del_company(id){
 
 	$.ajax({
 	    url : 'bill/delete/'+id,
-	    type: 'GET',
+	    type: 'DELETE',
 	    success: function(data)
 	    {
 			 $.when($.get("company/view", function(html) {
@@ -67,7 +67,7 @@ function del_company(id){
 
 	$.ajax({
 	    url : 'bill/delete/'+id,
-	    type: 'GET',
+	    type: 'DELETE',
 	    success: function(data)
 	    {
 			 $.when($.get("bill/view", function(html) {
@@ -104,7 +104,7 @@ function add_save(){
 	
         $.ajax({
             url: "bill/save",
-            type: "GET",
+			type: $("#Id").val() ? "PUT" : "POST",
             data: $('#company_submit').serialize()+"&Id="+$("#Id").val(),
             success: function(data, status, xhr) {
 	

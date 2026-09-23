@@ -1,19 +1,19 @@
 package main
 
 import (
+	models "Learning-Beego/models"
+	_ "Learning-Beego/routers"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
-	_ "github.com/mattn/go-sqlite3"
-	models "Learning-Beego/models"
 	_ "github.com/go-sql-driver/mysql"
-	_ "Learning-Beego/routers"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func init() {
 	orm.RegisterDriver("mysql", orm.DRMySQL)
-	orm.RegisterDataBase("default", "mysql", "root:@/dennis?charset=utf8")
-	orm.RegisterModel(new(models.Article),new(models.Company),new(models.C_bill))
-	orm.RunCommand()
+	orm.RegisterDataBase("default", "mysql", "root:123456@tcp(127.0.0.1:3307)/beego_billing?charset=utf8mb4")
+	orm.RegisterModel(new(models.Article), new(models.Company), new(models.C_bill), new(models.User))
+	orm.RunSyncdb("default", false, true)
 }
 
 func main() {

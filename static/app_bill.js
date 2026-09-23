@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	var loader = $('.app-loader');
+	$(document).ajaxStart(function() { loader.addClass('is-loading'); });
+	$(document).ajaxStop(function() { loader.removeClass('is-loading'); });
 	
 	$("#Company_code").focus();
 

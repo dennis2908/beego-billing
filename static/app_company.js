@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	var loader = $('.app-loader');
+	$(document).ajaxStart(function() { loader.addClass('is-loading'); });
+	$(document).ajaxStop(function() { loader.removeClass('is-loading'); });
 	
 	$("#Company_code").focus();
 
@@ -38,7 +41,8 @@ $(document).ready(function() {
             url: "company/save",
 			type: $("#Id").val() ? "PUT" : "POST",
             data: $('#company_submit').serialize()+"&Id="+$("#Id").val(),
-            success: function(data, status, xhr) {
+			error: function(xhr) { alert(xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : "Request failed"); },
+			success: function(data, status, xhr) {
 	
 				$.when($.get("company/view", function(html) {
 		            $("#table_content > tbody").html(html);

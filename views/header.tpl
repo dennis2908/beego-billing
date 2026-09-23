@@ -8,6 +8,8 @@
 </head>
 
 <body>
+
+<div class="app-loader" aria-hidden="true"></div>
     
 <div id="container">
     <nav>
